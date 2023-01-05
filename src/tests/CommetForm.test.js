@@ -2,7 +2,11 @@ import { screen , render, fireEvent } from "@testing-library/react";
 import CommentForm from "../components/CommentForm";
 
 test('Initializing component', () => {
-
+    render(<CommentForm/>);
+    const commentInput = screen.getRole("textbox");
+    expect(commentInput).toBeInTheDocument();
+    const checkbox = screen.getByLabelText("I agree to terms ans conditions", {exact: false});
+    expect(checkbox).toBeInTheDocument();
 });
 
 test("Enable submit button on type and checkbox list", () => {
